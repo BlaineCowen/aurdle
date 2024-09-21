@@ -44,36 +44,50 @@ export default function Game() {
     B4: 24,
   };
 
-  useEffect(() => {
-    const fetchAudioFiles = async () => {
-      try {
-        const response = await fetch(`/api/getSamples?ts=${Date.now()}`, {
-          cache: "no-store",
-        });
-        if (response.ok) {
-          const files = await response.json();
-          setAudioFiles(files);
+  const noteOrder = [
+    "C3",
+    "Csharp3",
+    "D3",
+    "Dsharp3",
+    "E3",
+    "F3",
+    "Fsharp3",
+    "G3",
+    "Gsharp3",
+    "A3",
+    "Asharp3",
+    "B3",
+    "C4",
+    "Csharp4",
+    "D4",
+    "Dsharp4",
+    "E4",
+    "F4",
+    "Fsharp4",
+    "G4",
+    "Gsharp4",
+    "A4",
+    "Asharp4",
+    "B4",
+  ];
 
-          const unsortedNotes = files.map((note: string) =>
-            note.replace(".mp3", "").replace("sharp", "#")
-          );
-          const sortedNotes = unsortedNotes.sort(
-            (a: string, b: string) => noteObject[a] - noteObject[b]
-          );
-          setSelectedNotes(sortedNotes);
-        } else {
-          setError("Failed to fetch audio files.");
-        }
-      } catch (err) {
-        setError("An error occurred while fetching audio files.");
-      }
+  useEffect(() => {
+    const randomizeNotes = (notes: string[]) => {
+      return notes.sort(() => 0.5 - Math.random());
     };
-    fetchAudioFiles();
+    // take 5
+    const selectedNotes = randomizeNotes(noteOrder).slice(0, 5);
+    // order selected notes
+    selectedNotes.sort((a, b) => noteOrder.indexOf(a) - noteOrder.indexOf(b));
+    setSelectedNotes(selectedNotes);
+
+    // set audio files
+    setAudioFiles(selectedNotes.map((note) => `${note}.mp3`));
   }, []);
 
   useEffect(() => {
     const mappedNumbers = selectedNotes
-      .map((note) => noteObject[note])
+      .map((note) => noteObject[note.replace("sharp", "#")])
       .sort((a, b) => a - b);
     setNoteNumbers(mappedNumbers);
   }, [selectedNotes]);
