@@ -28,13 +28,13 @@ export default function GreyGrid({
   const getCheckColor = (checkValue: number | undefined) => {
     if (checkValue === 0) return "bg-green-300";
     if (checkValue === -1) return "bg-blue-300";
-    if (checkValue === 1) return "bg-red-300";
+    if (checkValue === 1) return "bg-blue-300";
     if (checkValue === 2) return "bg-yellow-300";
     return "bg-gray-200"; // Default gray
   };
 
   return (
-    <div className="w-full max-w-xs mx-auto p-4">
+    <div className="w-10/12 lg:w-1/2 md:w-1/2 mx-auto p-4">
       <div className="grid grid-cols-5 gap-2 bg-white dark:bg-gray-900 p-4 rounded-lg shadow-lg">
         {gridItems.map((item, i) => (
           <div

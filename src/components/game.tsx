@@ -47,7 +47,9 @@ export default function Game() {
   useEffect(() => {
     const fetchAudioFiles = async () => {
       try {
-        const response = await fetch("/api/getSamples");
+        const response = await fetch("/api/getSamples", {
+          cache: "no-store",
+        });
         if (response.ok) {
           const files = await response.json();
           setAudioFiles(files);
@@ -172,7 +174,6 @@ export default function Game() {
         notes={submittedNotes.concat(pianoNotes)}
         checkArray={checkArray || []}
       />{" "}
-      {/* Pass checkArray to the grid */}
       <Piano
         onSelectedPianoNotesChange={handleSelectedPianoNotes}
         onSubmit={handleSubmit}
