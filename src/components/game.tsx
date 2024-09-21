@@ -15,6 +15,7 @@ export default function Game() {
   const [submittedNotes, setSubmittedNotes] = useState<string[]>([]);
   const [checkArray, setCheckArray] = useState<number[]>([]); // 2D array to track results per round
   const [win, setWin] = useState<boolean>(false);
+  const [acceptMessage, setAcceptMessage] = useState<boolean>(false);
 
   const noteObject: { [key: string]: number } = {
     C3: 1,
@@ -124,8 +125,36 @@ export default function Game() {
     setPianoNotes([]);
   };
 
+  const handleAcceptMessage = () => {
+    setAcceptMessage(true);
+  };
+
   return (
     <div className="flex-wrap justify-center text-center w-full">
+      {!acceptMessage && (
+        <div className="absolute flex w-full h-full items-center justify-center object-center">
+          <div className="w-1/2 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-200">
+              Welcome to Aurdle!
+            </h2>
+            <p className="text-center text-gray-600 dark:text-gray-400">
+              Aurdle is a game where you have to guess the correct notes in the
+              correct order.
+              <br />
+              You have 5 rounds to guess the correct notes.
+              <br />
+              Good luck!
+              <br />
+            </p>
+            <h3 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-200">
+              Make sure your sound is on!
+            </h3>
+            <Button onClick={handleAcceptMessage} className="w-1/2">
+              Accept
+            </Button>
+          </div>
+        </div>
+      )}
       {win && (
         <div className="absolute flex w-full h-full items-center justify-center object-center">
           <WinScreen results={checkArray} />

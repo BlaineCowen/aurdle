@@ -54,7 +54,7 @@ export default function WinScreen({ results = [] }: WinScreenProps) {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+    <div className="w-full max-w-md mx-auto p-4 bg-white dark:bg-gray-800 border-gray-900 border-2 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4 text-center text--800 dark:text-gray-200">
         You Win!
       </h2>
