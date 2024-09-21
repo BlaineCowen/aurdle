@@ -28,7 +28,7 @@ export default function WinScreen({ results = [] }: WinScreenProps) {
   };
 
   const handleShare = async () => {
-    const text = `Check out my result!\n\n${getEmojiGrid()}\n\nPlay now at yourgame.com`;
+    const text = `Check out my result!\n\n${getEmojiGrid()}\n\nPlay now at [aurdle.vercel.app](https://aurdle.vercel.app)`;
 
     await navigator.clipboard.writeText(text);
     setIsCopied(true);

@@ -133,7 +133,7 @@ export default function Game() {
     <div className="flex-wrap justify-center text-center w-full">
       {!acceptMessage && (
         <div className="absolute flex w-full h-full items-center justify-center object-center p-4 z-30 ">
-          <div className="w-1/2 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border-2 border-gray-900">
+          <div className="w-2/3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border-2 border-gray-900">
             <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-200">
               Welcome to Aurdle!
             </h2>
