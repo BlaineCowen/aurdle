@@ -51,7 +51,6 @@ export default function Game() {
         if (response.ok) {
           const files = await response.json();
           setAudioFiles(files);
-          console.log(files);
 
           const unsortedNotes = files.map((note: string) =>
             note.replace(".mp3", "").replace("sharp", "#")
@@ -156,11 +155,11 @@ export default function Game() {
         </div>
       )}
       {win && (
-        <div className="absolute flex w-full h-full items-center justify-center object-center">
+        <div className="absolute flex w-full h-full items-center justify-center object-center z-30">
           <WinScreen results={checkArray} />
         </div>
       )}
-      <h1 className="text-2xl font-serif">Aurdle</h1>
+      <h1 className="text-5xl font-serif">Aurdle</h1>
       {audioFiles.length > 0 ? (
         <div className="flex flex-col items-center justify-center w-full">
           <Play audioFiles={audioFiles} roundNumber={round} />

@@ -50,7 +50,7 @@ export default function PianoComponent({
   const isBlackKey = (note: string) => note.includes("#");
 
   return (
-    <div className="w-full max-w-full mx-auto p-4 flex-wrap justify-center objects-center">
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-screen mx-auto p-4 flex-wrap justify-center objects-center">
       <div className="text-center mb-4 w-full">
         <Button
           type="submit"
@@ -71,14 +71,14 @@ export default function PianoComponent({
               key={note}
               onClick={() => handleNoteClick(note)}
               className={`
-                ${
-                  isBlackKey(note)
-                    ? "bg-black text-white h-32 z-10 -mx-3 w-6"
-                    : "bg-white text-black h-40 w-10"
-                }
-                ${selectedNotes.includes(note) ? "ring-2 ring-blue-500" : ""}
-                border border-gray-300 flex items-end justify-center pb-2 flex-shrink-0
-              `}
+            ${
+              isBlackKey(note)
+                ? "bg-black text-white h-32 z-10 -mx-3 w-6"
+                : "bg-white text-black h-40 w-10"
+            }
+            ${selectedNotes.includes(note) ? "ring-2 ring-blue-500" : ""}
+            border border-gray-300 flex items-end justify-center pb-2 flex-shrink-0
+          `}
             >
               <span className="text-xs">{note}</span>
             </Button>

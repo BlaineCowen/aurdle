@@ -6,8 +6,6 @@ import type { APIRoute } from "astro";
 const samplesDir = join(process.cwd(), "public", "samples");
 
 export const GET: APIRoute = async () => {
-  console.log(import.meta.env.PUBLIC_DIR);
-
   try {
     // Define the path to the public samples directory
     console.log("samplesDir:", samplesDir); // Debug the directory path
@@ -26,6 +24,7 @@ export const GET: APIRoute = async () => {
     return new Response(JSON.stringify(selectedFiles), {
       status: 200,
       headers: {
+        "Cache-Control": "no-store, max-age=0", // Prevent caching
         "Content-Type": "application/json",
       },
     });
