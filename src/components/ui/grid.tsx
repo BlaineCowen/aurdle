@@ -34,7 +34,7 @@ export default function GreyGrid({
   };
 
   return (
-    <div className="w-10/12 lg:w-1/2 md:w-1/2 mx-auto p-4">
+    <div className="w-10/12 lg:w-1/3 md:w-1/2 mx-auto p-4">
       <div className="grid grid-cols-5 gap-2 bg-white dark:bg-gray-900 p-4 rounded-lg shadow-lg">
         {gridItems.map((item, i) => (
           <div

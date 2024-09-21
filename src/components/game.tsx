@@ -47,7 +47,7 @@ export default function Game() {
   useEffect(() => {
     const fetchAudioFiles = async () => {
       try {
-        const response = await fetch("/api/getSamples", {
+        const response = await fetch(`/api/getSamples?ts=${Date.now()}`, {
           cache: "no-store",
         });
         if (response.ok) {

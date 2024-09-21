@@ -1,10 +1,11 @@
 {
-  "routes": [
+  "rewrites": [
+    { "source": "/api/getSamples", "destination": "/api/getSamples" }
+  ],
+  "headers": [
     {
-      "src": "/api/getSamples",
-      "headers": {
-        "Cache-Control": "no-store, max-age=0"
-      }
+      "source": "/api/getSamples",
+      "headers": [{ "key": "Cache-Control", "value": "no-store, max-age=0" }]
     }
   ]
 }
