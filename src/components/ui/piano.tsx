@@ -50,8 +50,8 @@ export default function PianoComponent({
   const isBlackKey = (note: string) => note.includes("#");
 
   return (
-    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-screen mx-auto p-4 flex-wrap justify-center objects-center">
-      <div className="text-center mb-4 w-full">
+    <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-screen mx-auto py-4 flex-wrap justify-center objects-center">
+      <div className="text-center mb-2 w-full">
         <Button
           type="submit"
           className="bg-blue-500 hover:bg-blue-600 text-white"
@@ -62,7 +62,7 @@ export default function PianoComponent({
       </div>
       <div
         ref={scrollContainerRef}
-        className="overflow-x-auto flex justify-center pb-4 mb-4 max-w-full"
+        className="overflow-x-auto flex justify-center mb-1 max-w-full"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         <div className="flex" style={{ width: "fit-content" }}>
@@ -73,7 +73,7 @@ export default function PianoComponent({
               className={`
             ${
               isBlackKey(note)
-                ? "bg-black text-white h-32 z-10 -mx-3 w-6"
+                ? "bg-black text-white h-32 z-10 -mx-4 w-6"
                 : "bg-white text-black h-40 w-10"
             }
             ${selectedNotes.includes(note) ? "ring-2 ring-blue-500" : ""}
