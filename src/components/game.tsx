@@ -148,11 +148,11 @@ export default function Game() {
     <div className="flex-wrap justify-center text-center w-full">
       {!acceptMessage && (
         <div className="absolute flex w-full h-full items-center justify-center object-center p-4 z-30 ">
-          <div className="w-2/3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg border-2 border-gray-900">
-            <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-200">
+          <div className="w-2/3 bg-gray-900 p-4 rounded-lg shadow-lg border-2 border-gray-200">
+            <h2 className="text-2xl font-bold mb-4 text-center text-gray-200">
               Welcome to Aurdle!
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-400">
+            <p className="text-center text-gray-200">
               Aurdle is a game where you have to guess the correct notes in the
               correct order.
               <br />
@@ -161,10 +161,13 @@ export default function Game() {
               Good luck!
               <br />
             </p>
-            <h3 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-gray-200">
+            <h3 className="text-2xl font-bold mb-4 text-center text-gray-200">
               Make sure your sound is on!
             </h3>
-            <Button onClick={handleAcceptMessage} className="w-1/2">
+            <Button
+              onClick={handleAcceptMessage}
+              className="w-1/2 bg-green-800 hover:bg-green-700 text-white"
+            >
               Accept
             </Button>
           </div>
@@ -175,7 +178,7 @@ export default function Game() {
           <WinScreen results={checkArray} />
         </div>
       )}
-      <h1 className="text-5xl font-serif">Aurdle</h1>
+      <h1 className="text-5xl pt-2 font-serif text-white">Aurdle</h1>
       {audioFiles.length > 0 ? (
         <div className="flex flex-col items-center justify-center w-full">
           <Play audioFiles={audioFiles} roundNumber={round} />

@@ -116,7 +116,7 @@ export default function Play({ audioFiles, roundNumber }: PlayProps) {
   return (
     <div className="m-2 flex-wrap">
       <button
-        className="shadcdn-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="shadcdn-btn bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         onClick={playRandomSamples}
         disabled={isPlaying}
       >

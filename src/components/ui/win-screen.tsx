@@ -9,9 +9,9 @@ interface WinScreenProps {
 }
 
 const colorMap: { [key: number]: string } = {
-  "-1": "🟥", // Black square for -1
+  "-1": "⬛", // Black square for -1
   "0": "🟩", // Red square for 0
-  "1": "🟥", // Yellow square for 1
+  "1": "⬛", // Yellow square for 1
   "2": "🟨", // Green square for 2
 };
 

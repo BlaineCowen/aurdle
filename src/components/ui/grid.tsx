@@ -20,34 +20,32 @@ export default function GreyGrid({
     if (checkValue === undefined) return "";
     if (checkValue === 2) return "-";
     if (checkValue === 0) return "✓";
-    if (checkValue === 1) return "v";
-    if (checkValue === -1) return "^";
+    if (checkValue === 1) return "↑";
+    if (checkValue === -1) return "↓";
     return ""; // No check yet
   };
 
   const getCheckColor = (checkValue: number | undefined) => {
-    if (checkValue === 0) return "bg-green-300";
-    if (checkValue === -1) return "bg-blue-300";
-    if (checkValue === 1) return "bg-blue-300";
+    if (checkValue === 0) return "bg-green-700";
+    if (checkValue === -1) return "bg-gray-900 text-white";
+    if (checkValue === 1) return "bg-gray-900 text-white";
     if (checkValue === 2) return "bg-yellow-300";
-    return "bg-gray-200"; // Default gray
+    return "bg-gray-500"; // Default gray
   };
 
   return (
     <div className="w-10/12 lg:w-1/3 md:w-1/2 mx-auto p-4">
-      <div className="grid grid-cols-5 gap-2 bg-white dark:bg-gray-900 p-4 rounded-lg shadow-lg">
+      <div className="grid grid-cols-5 gap-2 bg-gray-700 p-4 border-2 border-black rounded-lg shadow-lg">
         {gridItems.map((item, i) => (
           <div
             key={`grid-item-${roundNumber}-${item}`} // Ensure unique key
             className={`aspect-square ${getCheckColor(
               checkArray[i]
-            )} rounded-lg border-2 border-gray-300 dark:border-gray-600 shadow-sm flex items-center justify-center`}
+            )} rounded-lg border-2 border-black shadow-sm flex items-center justify-center`}
             aria-label={`Grid cell ${item + 1}`}
           >
-            <h3 className="text-black">{notes[i]}</h3>
-            <span className="text-sm text-gray-600">
-              {getCheckLabel(checkArray[i])}
-            </span>
+            <h3 className=" text-xl">{notes[i]}</h3>
+            <span className="">{getCheckLabel(checkArray[i])}</span>
           </div>
         ))}
       </div>
