@@ -7,5 +7,9 @@
       "source": "/api/getSamples",
       "headers": [{ "key": "Cache-Control", "value": "no-store, max-age=0" }]
     }
-  ]
+  ],
+  "cron": {
+    "path": "/api/generateStrings",
+    "schedule": "0 0/5 * 1/1 * ? *"
+  }
 }

@@ -6,6 +6,7 @@ import { toast } from "@/hooks/use-toast";
 
 interface WinScreenProps {
   results?: number[];
+  answer: string[];
 }
 
 const colorMap: { [key: number]: string } = {
@@ -15,7 +16,10 @@ const colorMap: { [key: number]: string } = {
   "2": "🟨", // Green square for 2
 };
 
-export default function WinScreen({ results = [] }: WinScreenProps) {
+export default function WinScreen({
+  results = [],
+  answer = [],
+}: WinScreenProps) {
   const [isCopied, setIsCopied] = useState(false);
 
   const getEmojiGrid = () => {
@@ -58,7 +62,7 @@ export default function WinScreen({ results = [] }: WinScreenProps) {
       <h2 className="text-2xl font-bold mb-4 text-center text--800 dark:text-gray-200">
         You Win!
       </h2>
-      <div className="flex justify-center">
+      <div className="flex flex-wrap justify-center">
         <div className="grid grid-cols-5 m-2 w-1/2" aria-label="Result grid">
           {results.map((value, index) => (
             <div
@@ -69,6 +73,9 @@ export default function WinScreen({ results = [] }: WinScreenProps) {
             </div>
           ))}
         </div>
+        <h2 className="mb-2 w-full text-md font-bold text-gray-800 dark:text-gray-200">
+          {answer.join(", ").replace(/sharp/g, "♯")}
+        </h2>
       </div>
       <Button onClick={handleShare} className="w-1/2">
         {isCopied ? "Copied!" : "Copy to Clipboard"}

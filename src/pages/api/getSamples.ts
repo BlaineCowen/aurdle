@@ -7,9 +7,6 @@ const samplesDir = join(process.cwd(), "public", "samples");
 
 export const GET: APIRoute = async () => {
   try {
-    // Define the path to the public samples directory
-    console.log("samplesDir:", samplesDir); // Debug the directory path
-
     // Read the files in the directory
     const files = await readdir(samplesDir);
 

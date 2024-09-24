@@ -20,8 +20,8 @@ export default function GreyGrid({
     if (checkValue === undefined) return "";
     if (checkValue === 2) return "-";
     if (checkValue === 0) return "✓";
-    if (checkValue === 1) return "↑";
-    if (checkValue === -1) return "↓";
+    if (checkValue === 1) return "↓";
+    if (checkValue === -1) return "↑";
     return ""; // No check yet
   };
 
@@ -34,7 +34,7 @@ export default function GreyGrid({
   };
 
   return (
-    <div className="w-10/12 lg:w-1/3 md:w-1/2 mx-auto p-4">
+    <div className="w-10/12 lg:w-1/3 md:w-1/2  mx-auto py-4 px-8">
       <div className="grid grid-cols-5 gap-2 bg-gray-700 p-4 border-2 border-black rounded-lg shadow-lg">
         {gridItems.map((item, i) => (
           <div
@@ -44,8 +44,8 @@ export default function GreyGrid({
             )} rounded-lg border-2 border-black shadow-sm flex items-center justify-center`}
             aria-label={`Grid cell ${item + 1}`}
           >
-            <h3 className=" text-xl">{notes[i]}</h3>
-            <span className="">{getCheckLabel(checkArray[i])}</span>
+            <h3 className="text-sm md:text-xl lg:text-xl">{notes[i]}</h3>
+            <span className="text-xs">{getCheckLabel(checkArray[i])}</span>
           </div>
         ))}
       </div>

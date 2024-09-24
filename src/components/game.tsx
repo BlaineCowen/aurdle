@@ -5,7 +5,7 @@ import Grid from "../components/ui/grid";
 import { Button } from "../components/ui/button";
 import WinScreen from "./ui/win-screen";
 
-export default function Game() {
+export default function Game({ daily }: { daily: boolean }) {
   const [audioFiles, setAudioFiles] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedNotes, setSelectedNotes] = useState<string[]>([]);
@@ -72,17 +72,31 @@ export default function Game() {
   ];
 
   useEffect(() => {
-    const randomizeNotes = (notes: string[]) => {
-      return notes.sort(() => 0.5 - Math.random());
-    };
-    // take 5
-    const selectedNotes = randomizeNotes(noteOrder).slice(0, 5);
-    // order selected notes
-    selectedNotes.sort((a, b) => noteOrder.indexOf(a) - noteOrder.indexOf(b));
-    setSelectedNotes(selectedNotes);
+    const fetchData = async () => {
+      if (daily === false) {
+        const randomizeNotes = (notes: string[]) => {
+          return notes.sort(() => 0.5 - Math.random());
+        };
+        // take 5
+        const selectedNotes = randomizeNotes(noteOrder).slice(0, 5);
+        // order selected notes
+        selectedNotes.sort(
+          (a, b) => noteOrder.indexOf(a) - noteOrder.indexOf(b)
+        );
+        setSelectedNotes(selectedNotes);
 
-    // set audio files
-    setAudioFiles(selectedNotes.map((note) => `${note}.mp3`));
+        // set audio files
+        setAudioFiles(selectedNotes.map((note) => `${note}.mp3`));
+      } else {
+        const dailyNotes = await fetch("/api/generateNotes").then((res) =>
+          res.json()
+        );
+        setSelectedNotes(dailyNotes);
+        setAudioFiles(dailyNotes.map((note: string) => `${note}.mp3`));
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -175,7 +189,7 @@ export default function Game() {
       )}
       {win && (
         <div className="absolute flex w-full h-full items-center justify-center object-center z-30">
-          <WinScreen results={checkArray} />
+          <WinScreen results={checkArray} answer={selectedNotes} />
         </div>
       )}
       <h1 className="text-5xl pt-2 font-serif text-white">Aurdle</h1>

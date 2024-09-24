@@ -2,7 +2,6 @@
 import '@/styles/globals.css'
 import Game from '@/components/game.tsx'
 
-const daily = true;
 ---
 
 <html lang="en">
@@ -14,11 +13,11 @@ const daily = true;
 		<title>Aurdle</title>
 	</head>
 	<body>
-		<div class="bg-slate-900 h-svh w-full">
+		<div class="bg-slate-900 w-full h-svh max-h-svh">
 			<div class="fixed top-0 right-0 w-auto h-16 flex items-center pr-4 justify-center">
-				<a class=" text-white underline sm:text-5xs" href="./endless">Endless Mode</a>
+				<a class="text-xl text-white underline sm:text-sm" href="./">Daily Mode</a>
 			</div>
-			<Game client:load daily={true}/>
+			<Game client:load daily={false}/>
 		</div>
 	</body>
 </html>
