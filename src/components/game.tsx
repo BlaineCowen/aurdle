@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import Play from "../components/ui/play";
-import Piano from "../components/ui/piano";
-import Grid from "../components/ui/grid";
+import Play from "./play";
+import Piano from "./piano";
+import Grid from "./grid";
 import { Button } from "../components/ui/button";
-import WinScreen from "./ui/win-screen";
+import WinScreen from "./win-screen";
 
 export default function Game({ daily }: { daily: boolean }) {
   const [audioFiles, setAudioFiles] = useState<string[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const [selectedNotes, setSelectedNotes] = useState<string[]>([]);
   const [noteNumbers, setNoteNumbers] = useState<number[]>([]);
   const [round, setRound] = useState<number>(1);
@@ -87,7 +86,7 @@ export default function Game({ daily }: { daily: boolean }) {
 
         // set audio files
         setAudioFiles(selectedNotes.map((note) => `${note}.mp3`));
-      } else {
+      } else if (daily === true) {
         const dailyNotes = await fetch("/api/generateNotes").then((res) =>
           res.json()
         );
@@ -105,10 +104,6 @@ export default function Game({ daily }: { daily: boolean }) {
       .sort((a, b) => a - b);
     setNoteNumbers(mappedNumbers);
   }, [selectedNotes]);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   const handleSelectedPianoNotes = (notes: string[]) => {
     notes.sort((a, b) => noteObject[a] - noteObject[b]);

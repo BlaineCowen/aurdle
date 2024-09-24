@@ -11,8 +11,6 @@ export default function Play({ audioFiles, roundNumber }: PlayProps) {
   const [remainingPlays, setRemainingPlays] = useState(1);
   const [chordObjects, setChordObjects] = useState<{ [key: string]: Howl }>({});
 
-  let chord: Howl;
-
   const noteObject: { [key: string]: number } = {
     C3: 1,
     "C#3": 2,
