@@ -11,11 +11,13 @@ export default defineConfig({
     build: {
       sourcemap: process.env.NODE_ENV === "development", // Enable source maps only in development
     },
+    resolve: {
+      alias: {
+        "@": new URL("./src", import.meta.url).pathname,
+      },
+    },
   },
-  server: {
-    port: 3000,
-    host: true,
-  },
+
   integrations: [
     tailwind({
       applyBaseStyles: false,

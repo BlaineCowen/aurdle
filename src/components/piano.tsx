@@ -1,7 +1,5 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 const NOTES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 const TWO_OCTAVES = [...NOTES, ...NOTES].map(

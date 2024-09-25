@@ -1,10 +1,5 @@
-import { SourceMap } from "module";
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  compilerOptions: {
-    SourceMap: true,
-  },
   darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -51,12 +46,8 @@ export default {
         chart: {
           1: "hsl(var(--chart-1))",
           2: "hsl(var(--chart-2))",
-          3: "hsl(var(--chart-3))",
-          4: "hsl(var(--chart-4))",
-          5: "hsl(var(--chart-5))",
         },
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
 };
